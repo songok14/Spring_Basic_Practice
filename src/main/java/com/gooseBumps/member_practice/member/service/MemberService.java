@@ -8,6 +8,7 @@ import com.gooseBumps.member_practice.member.dto.MemberUpMessage;
 import com.gooseBumps.member_practice.member.repogitory.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -15,6 +16,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class MemberService {
     private final MemberRepository memberRepository;
 
@@ -28,11 +30,13 @@ public class MemberService {
     }
 
     // 회원 조회
+    @Transactional(readOnly = true)
     public List<MemberListDto> list(){
         return memberRepository.findAll().stream().map(a -> MemberListDto.fromEntity(a)).collect(Collectors.toList());
     }
 
     // 회원 상세
+    @Transactional(readOnly = true)
     public MemberDetailDto detail(Long memberSeq){
         Member member = memberRepository.findById(memberSeq).orElseThrow(() -> new NoSuchElementException("존재하지 않는 회원번호입니다."));
         return MemberDetailDto.fromEntity(member);
