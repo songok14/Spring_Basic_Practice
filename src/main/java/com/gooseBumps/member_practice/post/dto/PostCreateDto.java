@@ -1,6 +1,6 @@
 package com.gooseBumps.member_practice.post.dto;
 
-import com.gooseBumps.member_practice.common.constant.POST;
+import com.gooseBumps.member_practice.common.constant.PostType;
 import com.gooseBumps.member_practice.member.domain.Member;
 import com.gooseBumps.member_practice.post.domain.Post;
 import lombok.AllArgsConstructor;
@@ -11,14 +11,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class PostCreateDto {
-    private POST postCode = POST.QNA;
+    private String postCode = PostType.QNA.getCodeValue();
     private String title;
     private String contents;
     private Long memberSeq;
 
     public Post toEntity(Member member) {
         return Post.builder()
-                .postCode(this.postCode.getCode())
+                .postCode(PostType.fromCode(this.postCode))
                 .title(this.title)
                 .contents(this.contents)
                 .member(member)
