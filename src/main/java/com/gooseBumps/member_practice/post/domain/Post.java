@@ -1,6 +1,7 @@
 package com.gooseBumps.member_practice.post.domain;
 
 import com.gooseBumps.member_practice.common.DateTimeEntity;
+import com.gooseBumps.member_practice.common.constant.POST;
 import com.gooseBumps.member_practice.member.domain.Member;
 import jakarta.persistence.*;
 import lombok.*;
