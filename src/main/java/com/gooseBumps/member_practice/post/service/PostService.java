@@ -33,7 +33,7 @@ public class PostService {
     // 게시글 등록
     public void save(PostCreateDto postCreateDto){
         Member member = memberRepository.findById(postCreateDto.getMemberSeq()).orElseThrow(() -> new IllegalArgumentException("존재하지 않는 아이디입니다."));
-        postRepository.save(postCreateDto.toEntity(member));
+        Post post = postRepository.save(postCreateDto.toEntity(member));
     }
 
     // 게시글 목록 조회
