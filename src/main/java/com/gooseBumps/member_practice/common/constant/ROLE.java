@@ -17,4 +17,8 @@ public enum ROLE {
         return code;
     }
 
+    public String getName() {
+        return code;
+    }
+
 }

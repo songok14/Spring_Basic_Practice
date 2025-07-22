@@ -14,11 +14,11 @@ import lombok.NoArgsConstructor;
 @Data
 @Builder
 public class MemberCreateDto {
-    private String roleCode= ROLE.USER.getCode();
+    private String roleCode = "R003";
     @NotEmpty(message = "이메일을 입력해 주세요.")
     private String email;
     @NotEmpty(message = "비밀번호를 입력해 주세요.")
-    @Size(min=8, message = "비밀번호가 너무 짧습니다.")
+    @Size(min = 8, message = "비밀번호가 너무 짧습니다.")
     private String password;
     @NotEmpty(message = "이름을 입력해 주세요.")
     private String name;
