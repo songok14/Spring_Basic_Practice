@@ -1,6 +1,7 @@
 package com.gooseBumps.member_practice.post.domain;
 
 import com.gooseBumps.member_practice.common.DateTimeEntity;
+import com.gooseBumps.member_practice.common.constant.PostType;
 import com.gooseBumps.member_practice.member.domain.Member;
 import jakarta.persistence.*;
 import lombok.*;
@@ -15,7 +16,7 @@ public class Post extends DateTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long postSeq;
-    private String postCode;
+    private PostType postCode;
     private String title;
     private String contents;
     @Builder.Default
